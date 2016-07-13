@@ -2,28 +2,38 @@ $(document).ready(function() {
 
 	$("#submit-button").click(function(event) {
 		event.preventDefault();
-		$("#factorial-result").empty();
-		var myInput = $("#new-number").val();
-		if (+(myInput) % 1 != 0) {
-			alert("Input must be an integer");
-		}
-		else if	(+(myInput) < 0){
-			alert("Input must not negative");
+		$("#is-palindrome").empty();
+		var myInput = $("#new-word").val();
+		if(myInput == ''){
+			alert("Please enter a word");
 		}
 		else {
-			var number = parseInt(+(myInput));
-			$("#factorial-result").append(factorial(number));
+			var letterArray = myInput.split("");
+			if(checkPalindrome(letterArray) == true) {
+				$("#is-palindrome").append("Yes");
+			}
+			else {
+				$("#is-palindrome").append("No");
+			}
 		}
 	});
 
-	function factorial(myNumber){
-		var myProduct = myNumber;
-		var i = myNumber;
-		while(i > 1) {
-			i--;
-		 	myProduct*=i;
+	function checkPalindrome(myLetterArray){
+		var middle = 0;
+		var isPalindrome = true; //flag if the word is a palindrome
+		var end = myLetterArray.length - 1;
+		if(myLetterArray.length % 2 == 1) {
+			middle = parseInt((myLetterArray.length - 1)/2);
 		}
-		return myProduct;
+		else {
+			middle = myLetterArray.length / 2;
+		}
+		for(var i=0; i<middle; i++) {
+			if(myLetterArray[i] !== myLetterArray[end - i]){
+				isPalindrome = false;
+			}
+		}
+		return isPalindrome;
 	}
 
 });
