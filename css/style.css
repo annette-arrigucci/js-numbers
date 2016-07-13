@@ -23,6 +23,20 @@ h1 {
 	border-radius: 15px;
 }
 
+.main p {
+	text-align: center;
+}
+
+.main form {
+	width: 40%;
+	margin: 0 auto;
+}
+
+form button {
+	display: block;
+	margin: 0.5em auto;
+}
+
 button {
 	margin: 10px;
 }
